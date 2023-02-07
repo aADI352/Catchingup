@@ -13,14 +13,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         gotoLoginFragment();
-
     }
 
     private void gotoLoginFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.framelayoutmain, new ListFragment());
+        ft.replace(R.id.framelayoutmain, new LoginFragment());
         ft.commit();
     }
 }

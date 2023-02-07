@@ -74,7 +74,7 @@ public class LoginFragment extends Fragment {
         etUsername = getView().findViewById(R.id.etUsernamelogin);
         etPassword = getView().findViewById(R.id.etPasswordlogin);
         btnLogin = getView().findViewById(R.id.btnLoginLogin);
-        btnLogin    .setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = etUsername.getText().toString();
@@ -84,8 +84,6 @@ public class LoginFragment extends Fragment {
                     return;
 
                 }
-
-
                 fbs.getAuth().signInWithEmailAndPassword(username,password).addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
