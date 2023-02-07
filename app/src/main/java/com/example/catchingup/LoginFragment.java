@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ public class LoginFragment extends Fragment {
     private EditText etUsername, etPassword;
     private Button btnLogin;
     private FirebaseServices fbs;
+    private Button newaccount;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -74,6 +76,15 @@ public class LoginFragment extends Fragment {
         etUsername = getView().findViewById(R.id.etUsernamelogin);
         etPassword = getView().findViewById(R.id.etPasswordlogin);
         btnLogin = getView().findViewById(R.id.btnLoginLogin);
+        newaccount = getView().findViewById(R.id.btnNewACC);
+
+
+        newaccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoSignupFragment();
+            }
+        });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +100,7 @@ public class LoginFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //TODO:decide on what to do
+                            Toast.makeText(getActivity(), "heeeeeeeeeeey", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             //TODO: decide on what to do
@@ -102,5 +114,11 @@ public class LoginFragment extends Fragment {
 
             }
         });
+    }
+
+    private void gotoSignupFragment(){
+        FragmentTransaction ft= getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.framelayoutmain, new signupFragment());
+        ft.commit();
     }
 }
