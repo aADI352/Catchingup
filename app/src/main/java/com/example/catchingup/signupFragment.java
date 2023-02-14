@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -81,10 +82,11 @@ public class signupFragment extends Fragment {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            //TODO:decide on what to do
+                             gotorecyclerview();
+
                         }
                         else {
-                            //TODO: decide on what to do
+                            Toast.makeText(getActivity(), "check ur data dumb", Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -95,5 +97,11 @@ public class signupFragment extends Fragment {
 
             }
         });
+    }
+
+    private void gotorecyclerview() {
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.framelayoutmain, new fbsrecyclerview());
+        ft.commit();
     }
 }

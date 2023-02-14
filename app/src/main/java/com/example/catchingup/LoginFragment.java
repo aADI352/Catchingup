@@ -100,10 +100,10 @@ public class LoginFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             //TODO:decide on what to do
-                            Toast.makeText(getActivity(), "heeeeeeeeeeey", Toast.LENGTH_SHORT).show();
+                            gotorecyclerview();
                         }
                         else {
-                            //TODO: decide on what to do
+                            Toast.makeText(getActivity(), "invalid password lol", Toast.LENGTH_SHORT).show();
                         }
 
 
@@ -114,6 +114,12 @@ public class LoginFragment extends Fragment {
 
             }
         });
+    }
+
+    private void gotorecyclerview() {
+        FragmentTransaction ft = getActivity().getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.framelayoutmain, new fbsrecyclerview());
+        ft.commit();
     }
 
     private void gotoSignupFragment(){
